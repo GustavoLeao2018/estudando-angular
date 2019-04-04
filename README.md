@@ -148,14 +148,16 @@ Adicione o seguinte código ao **index.html**:
         <title>Hello, Cruel World!</title>
     </head>
     <body ng-controller="estudandoAngularCtrl">
-        <br/>
-        <div class="container-fluid">
-            <header class="jumbotron">
+            <header class="container-fluid jumbotron">
                 <h1 class="text-center">
                     {{titulo}}
                 </h1>
             </header>
-        </div>
+
+            <section class="container-fluid">
+                <h2 ng-bind="subtitulo" class="text-center">                   
+                </h2>
+            </section>
 
     </body>
 </html>
@@ -167,7 +169,110 @@ Adicione o código ao **escript.js**:
 angular.module("estudandoAngular", []);
 angular.module("estudandoAngular").controller("estudandoAngularCtrl", function($scope){
     $scope.titulo = "Hello, Cruel World!";
+    $scope.subtitulo = "Lista Telefonica";
+
+     // Criando um array
+    $scope.contatos  = [
+        { nome: "Gustavo",  telefone: "985309446" },
+        { nome: "Moisés",   telefone: "989456123" },
+        { nome: "Sônia",    telefone: "985448567" },
+        { nome: "José",     telefone: "934343416" },
+        { nome: "Pedro",    telefone: "991114534" }
+    ];
 });
 ```
 
+## Módulos
+`angular.module` cria um módulo, e o `[]`, que está vazio deixa vazio com o módulo. 
 
+## Diretivas
+São extesões para o html, declaradas nas tags:
+
+- ng-app:
+Define onde serão as fronteiras da aplicação.
+
+- ng-controller:
+Vincula a **view** (a parte que é vizualizada ) ao **controller** (que controla como a a plicação funciona).
+
+A variável que vai dentro da função, chamada `$scope` é quem faz o intermédio entre a **view** e o **controller**.
+
+- ng-bind:
+Subistitui o elemento, for uma expressão.
+
+Por exemplo o subtitulo que está dentro de controller:
+
+```javascript
+$scope.subtitulo = "Lista Telefonica";
+```
+
+Será colocado no lugar do subititulo:
+```html
+<h2 ng-bind="subtitulo" class="text-center">
+</h2>
+```
+
+A interpolação funciona da mesma maneira que o ng-bind. Como no exemplo:
+
+```html
+<h1 class="text-center">
+    {{titulo}}
+</h1>
+```
+
+- ng-repeat
+Iterando objetos e arrays.
+
+Cria-se um array:
+```javascript
+    // Criando um array
+    $scope.contatos  = [
+        { nome: "Gustavo",  telefone: "985309446" },
+        { nome: "Moisés",   telefone: "989456123" },
+        { nome: "Sônia",    telefone: "985448567" },
+        { nome: "José",     telefone: "934343416" },
+        { nome: "Pedro",    telefone: "991114534" }
+    ];
+```
+
+Itera os dados em uma tabela:
+```html
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="contato in contatos">
+            <td>{{contato.nome}}</td>
+            <td>{{contato.telefone}}</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+- ng-model:
+Faz o inverso do ng-bind, enviando da view para o controller:
+
+```html
+<input class="form-control" type="text" placeholder="Seu nome" ng-model="contato.nome"/>
+<input class="form-control" type="text" placeholder="Número de telefone" ng-model="contato.telefone"/>
+```
+
+- ng-click:
+
+Da a funcionalidade de clique ao botão, executando o comportamento em um elemento.
+
+```html
+<input class="btn btn-success btn-block" type="submit" value="Salvar" ng-click="adicionar(contato)"/>
+```
+
+```javascript
+ $scope.adicionar = function(contato){
+    // Adicionando ao array a cópia de contato
+    $scope.contatos.push(angular.copy(contato));
+    // Apaga o contato
+    delete $scope.contato;
+};
+```

@@ -1,4 +1,22 @@
 angular.module("estudandoAngular", []);
 angular.module("estudandoAngular").controller("estudandoAngularCtrl", function($scope){
     $scope.titulo = "Hello, Cruel World!";
+    $scope.subtitulo = "Lista Telefonica";
+
+    // Criando um array
+    $scope.contatos  = [
+        { nome: "Gustavo",  telefone: "985309446" },
+        { nome: "Moisés",   telefone: "989456123" },
+        { nome: "Sônia",    telefone: "985448567" },
+        { nome: "José",     telefone: "934343416" },
+        { nome: "Pedro",    telefone: "991114534" }
+    ];
+
+   
+    $scope.adicionar = function(contato){
+        // Adicionando ao array a cópia de contato
+        $scope.contatos.push(angular.copy(contato));
+        // Apaga o contato
+        delete $scope.contato;
+    };
 });

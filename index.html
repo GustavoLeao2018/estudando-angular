@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="estudandoAngular">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/estilo.css"/>
+
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/angular/angular.min.js"></script>
+        <script src="js/escript.js"></script>
+
+        <title>Hello, Cruel World!</title>
+    </head>
+    <body ng-controller="estudandoAngularCtrl">
+            <header class="container-fluid jumbotron">
+                <h1 class="text-center">
+                    {{titulo}}
+                </h1>
+            </header>
+
+            <section class="container-fluid">
+                <h2 ng-bind="subtitulo" class="text-center">                   
+                </h2>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="contato in contatos">
+                            <td>{{contato.nome}}</td>
+                            <td>{{contato.telefone}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                
+                <input class="form-control" type="text" placeholder="Seu nome" ng-model="contato.nome"/>
+                <input class="form-control" type="text" placeholder="Número de telefone" ng-model="contato.telefone"/>
+                <input class="btn btn-success btn-block" type="submit" value="Salvar" ng-click="adicionar(contato)"/>
+            </section>
+
+    </body>
+</html>
