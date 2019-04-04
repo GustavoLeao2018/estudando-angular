@@ -1,0 +1,30 @@
+{
+  "name": "estudando-angular",
+  "version": "1.0.0",
+  "description": "Estudando angular-js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GustavoLeao2018/estudando-angular.git"
+  },
+  "keywords": [
+    "Angular",
+    "Node",
+    "Web"
+  ],
+  "author": "Gustavo Leão Nogueira de Oliveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GustavoLeao2018/estudando-angular/issues"
+  },
+  "homepage": "https://github.com/GustavoLeao2018/estudando-angular#readme",
+  "dependencies": {
+    "angular": "^1.7.8",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.7"
+  }
+}
