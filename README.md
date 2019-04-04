@@ -98,25 +98,25 @@ npm init
 ### Instalando o necessário
 Para instalarmos uma versão do Angular.js, rode o seguinte comando:
 
-```bash
+```node
 npm install angular --save
 ```
 
 Vamos instalar o jquery:
 
-```bash
+```node
 npm install jquery --save
 ```
 
 Vamos instalar o popper.js:
 
-```bash
+```node
 npm install popper.js --save
 ````
 
 Vamos instalar o bootstrap:
 
-```bash
+```node
 npm install bootstrap --save
 ```
 
