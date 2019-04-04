@@ -22,16 +22,18 @@
                 <h2 ng-bind="subtitulo" class="text-center">                   
                 </h2>
 
-                <table class="table table-striped">
+                <table ng-show="contatos.length > 0" class="table">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Nome</th>
                             <th>Telefone</th>
                             <th>Operadora</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="contato in contatos">
+                        <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos">
+                            <td><input class="checkbox" type="checkbox" ng-model="contato.selecionado"></td>
                             <td>{{contato.nome}}</td>
                             <td>{{contato.telefone}}</td>
                             <td>{{contato.operadora.nome}}</td>
@@ -45,10 +47,14 @@
                 <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras"> 
                     <option value="">Selecione sua operadora</option>    
                 </select>
-                <input class="btn btn-success btn-block" type="submit" value="Salvar" ng-click="adicionar(contato)" ng-disabled="!contato.nome || !contato.telefone"/>
-                {}
+                <button class="btn btn-success btn-block" ng-click="adicionar(contato)" ng-disabled="!contato.nome || !contato.telefone || !contato.operadora">Salvar</button> 
+                <button class="btn btn-danger btn-block" ng-click="apagar(contatos)" ng-show="isContato(contatos)">Apagar</button>
+               
             
             </section>
 
+            <div class="container-fluid" ng-include="'footer.html'">
+
+            </div>
     </body>
 </html>

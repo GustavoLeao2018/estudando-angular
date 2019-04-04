@@ -265,7 +265,8 @@ Faz o inverso do ng-bind, enviando da view para o controller:
 Da a funcionalidade de clique ao botão, executando o comportamento em um elemento.
 
 ```html
-<input class="btn btn-success btn-block" type="submit" value="Salvar" ng-click="adicionar(contato)"/>
+<button class="btn btn-success btn-block" ng-click="adicionar(contato)" ng-disabled="!contato.nome || !contato.telefone || !contato.operadora">Salvar</button> 
+                
 ```
 
 ```javascript
@@ -282,7 +283,8 @@ Da a funcionalidade de clique ao botão, executando o comportamento em um elemen
 Desabilita um botão, ou qualque tag.
 
 ```html
-<input class="btn btn-success btn-block" type="submit" value="Salvar" ng-click="adicionar(contato)" ng-disabled="!contato.nome || !contato.telefone"/>
+<button class="btn btn-success btn-block" ng-click="adicionar(contato)" ng-disabled="!contato.nome || !contato.telefone || !contato.operadora">Salvar</button> 
+                
 ```
 
 - ng-option:
@@ -303,3 +305,85 @@ $scope.opreadoras = [
     <option value="">Selecione sua operadora</option>    
 </select>
 ```
+
+- ng-class e ng-style:
+
+Aplicam estilos e classes dinamicamente:
+
+```css
+.selecionado {
+    background-color: lightyellow;
+}
+```
+
+```html
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Operadora</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos">
+            <td><input class="checkbox" type="checkbox" ng-model="contato.selecionado"></td>
+            <td>{{contato.nome}}</td>
+            <td>{{contato.telefone}}</td>
+            <td>{{contato.operadora.nome}}</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+- ng-show, ng-hide, ng-if:
+
+Mostra se uma condição for verdade:
+
+O if meche direto na dom.
+
+Apagando:
+```html
+<table ng-show="contatos.length > 0" class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Operadora</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos">
+            <td><input class="checkbox" type="checkbox" ng-model="contato.selecionado"></td>
+            <td>{{contato.nome}}</td>
+            <td>{{contato.telefone}}</td>
+            <td>{{contato.operadora.nome}}</td>
+        </tr>
+    </tbody>
+</table>
+<button class="btn btn-danger btn-block" ng-click="apagar(contatos)" ng-show="isContato(contatos)">Apagar</button>
+
+```
+
+```javascript
+$scope.apagar = function(contatos){
+    $scope.contatos = contatos.filter(function(contato){
+        if (!contato.selecionado){
+            return contato
+        }
+    });
+};
+
+$scope.isContato = function(contatos){
+    return contatos.some(function(contato){
+        return contato.selecionado;
+    }); 
+}
+```
+
+- ng-include:
+importa um html de outra página
+
+

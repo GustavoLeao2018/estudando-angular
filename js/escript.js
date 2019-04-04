@@ -26,4 +26,17 @@ angular.module("estudandoAngular").controller("estudandoAngularCtrl", function($
         {nome: "Vivo", codigo: 15},
         {nome: "Tim", codigo: 41}
     ];
+
+    $scope.apagar = function(contatos){
+        $scope.contatos = contatos.filter(function(contato){
+            if (!contato.selecionado)return contato;
+        });
+    };
+
+    $scope.isContato = function(contatos){
+        return contatos.some(function(contato){
+            return contato.selecionado;
+        }); 
+        
+    }
 });
