@@ -122,6 +122,52 @@ npm install bootstrap --save
 
 ---
 
-## Criando os códigos
-## Crie as seguintes pastas
+## Criando os códigos e pastas
+
+- Para salvar os estilos: **css**
+- Para salvar os escripts: **js**
+- Crie o **estilo.css** dentro de **css**
+- Crie o **escript.js** dentro de **js**
+- Crie na pasta anterior a **css** e **js**, um **index.html**.
+
+## Fazendo o hello World!
+Adicione o seguinte código ao **index.html**:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="estudandoAngular">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/estilo.css"/>
+
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/angular/angular.min.js"></script>
+        <script src="js/escript.js"></script>
+
+        <title>Hello, Cruel World!</title>
+    </head>
+    <body ng-controller="estudandoAngularCtrl">
+        <br/>
+        <div class="container-fluid">
+            <header class="jumbotron">
+                <h1 class="text-center">
+                    {{titulo}}
+                </h1>
+            </header>
+        </div>
+
+    </body>
+</html>
+```
+
+Adicione o código ao **escript.js**:
+
+```javascript
+angular.module("estudandoAngular", []);
+angular.module("estudandoAngular").controller("estudandoAngularCtrl", function($scope){
+    $scope.titulo = "Hello, Cruel World!";
+});
+```
+
 
