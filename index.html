@@ -27,12 +27,14 @@
                         <tr>
                             <th>Nome</th>
                             <th>Telefone</th>
+                            <th>Operadora</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="contato in contatos">
                             <td>{{contato.nome}}</td>
                             <td>{{contato.telefone}}</td>
+                            <td>{{contato.operadora.nome}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -40,7 +42,12 @@
                 
                 <input class="form-control" type="text" placeholder="Seu nome" ng-model="contato.nome"/>
                 <input class="form-control" type="text" placeholder="Número de telefone" ng-model="contato.telefone"/>
-                <input class="btn btn-success btn-block" type="submit" value="Salvar" ng-click="adicionar(contato)"/>
+                <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras"> 
+                    <option value="">Selecione sua operadora</option>    
+                </select>
+                <input class="btn btn-success btn-block" type="submit" value="Salvar" ng-click="adicionar(contato)" ng-disabled="!contato.nome || !contato.telefone"/>
+                {}
+            
             </section>
 
     </body>

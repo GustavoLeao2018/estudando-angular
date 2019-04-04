@@ -276,3 +276,30 @@ Da a funcionalidade de clique ao botão, executando o comportamento em um elemen
     delete $scope.contato;
 };
 ```
+
+- ng-disabled:
+
+Desabilita um botão, ou qualque tag.
+
+```html
+<input class="btn btn-success btn-block" type="submit" value="Salvar" ng-click="adicionar(contato)" ng-disabled="!contato.nome || !contato.telefone"/>
+```
+
+- ng-option:
+
+Cria um select fácil, como um select de operadoras por exemplo:
+
+```javascript
+//Aray de operadoras
+$scope.opreadoras = [
+    {nome: "Oi", codigo: 14},
+    {nome: "Vivo", codigo: 15},
+    {nome: "Tim", codigo: 41}
+];
+```
+
+```html
+<select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras"> 
+    <option value="">Selecione sua operadora</option>    
+</select>
+```

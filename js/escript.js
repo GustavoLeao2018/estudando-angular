@@ -19,4 +19,11 @@ angular.module("estudandoAngular").controller("estudandoAngularCtrl", function($
         // Apaga o contato
         delete $scope.contato;
     };
+
+    //Aray de operadoras
+    $scope.operadoras = [
+        {nome: "Oi", codigo: 14},
+        {nome: "Vivo", codigo: 15},
+        {nome: "Tim", codigo: 41}
+    ];
 });
